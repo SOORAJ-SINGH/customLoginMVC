@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+}
+
+<h2>Home Page</h2>
+@if (Request.IsAuthenticated)
+{
+    if (User.IsInRole("Admin"))
+    {
+        <h3>Hello Admin!</h3>
+    }
+    <strong>@Html.Encode(User.Identity.Name)</strong>
+    
+
+    @Html.ActionLink("Log Out", "LogOut", "Login")
+    <br />
+
+   
+}
+else
+{
+    @Html.ActionLink("Register", "Registration", "User")
+    <span> | </span>
+    @Html.ActionLink("Log In", "Index", "Login")
+}
+
+
